@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>关于 | Guan&#39;s blog</title>
+<title> 基于随机森林的多因子选股模型 | Guan&#39;s blog</title>
 
 <link rel="shortcut icon" href="https://nkuguanrui.github.io/favicon.ico?v=1611409703435">
 
@@ -202,27 +202,305 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    关于
+                     基于随机森林的多因子选股模型
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2019-01-25 ·
+                        · 2021-01-23 ·
                     </time>
                     
                 </div>
                 <div class="post-content">
-                    <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+                    <p>本项目参考了华泰证券研报《人工智能选股之随机森林模型》。</p>
+<h2 id="随机森林">随机森林</h2>
+<p>随机森林利用了Bagging思想，集合多个决策树的决策，最终达到“三个臭皮匠顶个诸葛亮”效果，如图1。有关随机森林具体做法可以参考研报和相关书籍。<br>
+<img src="https://github.com/nkuguanrui/portfolio_select_with_random_forest/blob/main/RF.png" alt="image" loading="lazy"><div align = center>图1</div></p>
+<h2 id="因子选择">因子选择</h2>
+<p>选择A股市场中表现较好的因子，如表1</p>
+<p>表1：因子</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">大类因子</th>
+<th style="text-align:center">具体因子</th>
+<th>因子描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">价值</td>
+<td style="text-align:center">pe_ttm</td>
+<td>市盈率，股票的价格和每股收益的比率</td>
+</tr>
+<tr>
+<td style="text-align:center">价值</td>
+<td style="text-align:center">pb_ttm</td>
+<td>市净率，每股股价与每股净资产的比率</td>
+</tr>
+<tr>
+<td style="text-align:center">价值</td>
+<td style="text-align:center">ps_ttm</td>
+<td>市销率，总市值与主营业务收入的比率</td>
+</tr>
+<tr>
+<td style="text-align:center">价值</td>
+<td style="text-align:center">pcf_ttm</td>
+<td>市现率，股票价格与每股现金流量的比率</td>
+</tr>
+<tr>
+<td style="text-align:center">价值</td>
+<td style="text-align:center">dividendyield</td>
+<td>股息率，一年的总派息额与当时市价的比例</td>
+</tr>
+<tr>
+<td style="text-align:center">价值</td>
+<td style="text-align:center">g_pe</td>
+<td>净利润（TTM）同比增长率/PE_TTM</td>
+</tr>
+<tr>
+<td style="text-align:center">成长</td>
+<td style="text-align:center">sales_g</td>
+<td>营业收入（TTM）同比增长率</td>
+</tr>
+<tr>
+<td style="text-align:center">成长</td>
+<td style="text-align:center">sales_g_3y</td>
+<td>营业收入三年复合增长率</td>
+</tr>
+<tr>
+<td style="text-align:center">成长</td>
+<td style="text-align:center">profit_g</td>
+<td>净利润（TTM）同比增长率</td>
+</tr>
+<tr>
+<td style="text-align:center">成长</td>
+<td style="text-align:center">profit_g_3y</td>
+<td>净利润三年复合增长率</td>
+</tr>
+<tr>
+<td style="text-align:center">成长</td>
+<td style="text-align:center">ocf_g</td>
+<td>经营性现金流（TTM）同比增长率</td>
+</tr>
+<tr>
+<td style="text-align:center">成长</td>
+<td style="text-align:center">roe_g</td>
+<td>ROE（TTM）同比增长率</td>
+</tr>
+<tr>
+<td style="text-align:center">市值</td>
+<td style="text-align:center">ln_capital</td>
+<td>总市值取对数</td>
+</tr>
+<tr>
+<td style="text-align:center">动量反转</td>
+<td style="text-align:center">return_Nm</td>
+<td>个股最近N个月收益率，N=1,3,6,12</td>
+</tr>
+<tr>
+<td style="text-align:center">动量反转</td>
+<td style="text-align:center">wgt_return_Nm</td>
+<td>个股最近N个月内用每日换手率乘以每日收益率求算术平均值N=1,3,6,12</td>
+</tr>
+<tr>
+<td style="text-align:center">动量反转</td>
+<td style="text-align:center">exp_wgt_return_Nm</td>
+<td>个股最近N个月内用每日换手率乘以函数exp(-x_i/N/4)再乘以每日收益率求算术平均值，x_i为该日距离截面日的交易日的数,N=1,3,6,12</td>
+</tr>
+<tr>
+<td style="text-align:center">波动率</td>
+<td style="text-align:center">std_ff3factor_Nm</td>
+<td>特质波动率——个股最近N个月内用日频收益率对FF三因子模型回归的残差的标准差，N=1,3,6,12</td>
+</tr>
+<tr>
+<td style="text-align:center">波动率</td>
+<td style="text-align:center">std_Nm</td>
+<td>个股最近N个月的日收益率序列标准差，N=1,3,6,12</td>
+</tr>
+<tr>
+<td style="text-align:center">股价</td>
+<td style="text-align:center">ln_price</td>
+<td>股价取对数</td>
+</tr>
+<tr>
+<td style="text-align:center">情绪</td>
+<td style="text-align:center">rating_average</td>
+<td>wind评级的平均值</td>
+</tr>
+<tr>
+<td style="text-align:center">情绪</td>
+<td style="text-align:center">rating_targetprice</td>
+<td>wind一致目标价/现价-1</td>
+</tr>
+<tr>
+<td style="text-align:center">股东</td>
+<td style="text-align:center">holder_avgpctchange</td>
+<td>户均持股比例的同比增长率</td>
+</tr>
+<tr>
+<td style="text-align:center">技术</td>
+<td style="text-align:center">MACD</td>
+<td>经典技术指标，长周期取30日，短周期取10日，计算DEA均线的周期（中周期）取15日</td>
+</tr>
+<tr>
+<td style="text-align:center">技术</td>
+<td style="text-align:center">DEA</td>
+<td>经典技术指标，长周期取30日，短周期取10日，计算DEA均线的周期（中周期）取15日</td>
+</tr>
+<tr>
+<td style="text-align:center">技术</td>
+<td style="text-align:center">DIF</td>
+<td>经典技术指标，长周期取30日，短周期取10日，计算DEA均线的周期（中周期）取15日</td>
+</tr>
+<tr>
+<td style="text-align:center">财务质量因子</td>
+<td style="text-align:center">roe_ttm</td>
+<td>净资产收益率</td>
+</tr>
+<tr>
+<td style="text-align:center">财务质量因子</td>
+<td style="text-align:center">eps_ttm</td>
+<td>每股收益</td>
+</tr>
+<tr>
+<td style="text-align:center">财务质量因子</td>
+<td style="text-align:center">ebit_ttm</td>
+<td>税前利润率，税前利润比当期的销售收入</td>
+</tr>
+<tr>
+<td style="text-align:center">杠杆</td>
+<td style="text-align:center">currentratio</td>
+<td>流动比率，流动负债/流动资产</td>
+</tr>
+<tr>
+<td style="text-align:center">杠杆</td>
+<td style="text-align:center">debtequityratio</td>
+<td>非流动负债/净资产</td>
+</tr>
+<tr>
+<td style="text-align:center">换手率</td>
+<td style="text-align:center">bias_turn_Nm</td>
+<td>个股最近N个月内日均换手率除以最近2年内日均换手率（剔除停牌、涨跌停的交易日）再减去1，N=1,3,6,12</td>
+</tr>
+</tbody>
+</table>
+<h1 id="模型构建">模型构建</h1>
+<h2 id="数据处理">数据处理</h2>
+<ol>
+<li>数据获取
+<ul>
+<li>股票池：沪深300动态股票池月度数据。</li>
+</ul>
+<ul>
+<li>回测区间：2010-01-01到2020-06-01</li>
+<li>换仓期：在每个自然月最后一个交易日核算因子值，在下个自然月首个交易日按当日收盘价换仓。</li>
+<li>数据来源：wind+聚宽</li>
+</ul>
+</li>
+<li>数据预处理
+<ul>
+<li>缺失值：拉格朗日插值法</li>
+<li>极端值：MAD中位数去极值</li>
+<li>标准化：最大最小标准化</li>
+</ul>
+</li>
+<li>特征与标签
+<ul>
+<li>特征：表1中50个因子</li>
+<li>标签：在每个月末截面期，选取下月收益排名前 30%的股票作为正例（y = 1） ，后 30%的<br>
+股票作为负例（y = 0）</li>
+</ul>
+</li>
+</ol>
+<h2 id="单测试集回测">单测试集回测</h2>
+<ol>
+<li>训练集测试集划分
+<ul>
+<li>训练集区间：2010-01-01到2016-12-31</li>
+<li>测试集区间：2017-01-01到2020-05-01</li>
+</ul>
+</li>
+<li>训练集参数寻优
+<ul>
+<li>KFold交叉验证</li>
+<li>超参数：n_estimators;max_features;<br>
+min_samples_leaf;min_samples_split</li>
+</ul>
+</li>
+<li>测试集回测
+<ul>
+<li>长时间跨度测试集回测</li>
+<li>模型参数固定，可能会失效</li>
+</ul>
+</li>
+</ol>
+<h2 id="回测指标">回测指标</h2>
+<ul>
+<li>年化收益率</li>
+<li>年化波动率</li>
+<li>夏普比率</li>
+<li>最大回撤</li>
+<li>IR信息比率</li>
+<li>超额收益</li>
+<li>净值</li>
+</ul>
+<h2 id="滚动分层回测多测试集回测">滚动分层回测（多测试集回测）</h2>
+<ol>
+<li>行业中性策略<br>
+将随机森林预测值是为单因子，分别从各个行业中选出预测值排名靠前的N只股票等权配置。</li>
+<li>等权重策略<br>
+将随机森林预测值是为单因子，直接从股票池中选取预测值排名靠前的N只股票等权配置。</li>
+</ol>
+<h2 id="实证研究">实证研究</h2>
+<p>分别进行滚动行业中性策略，滚动等权重策略，行业中性单测试集策略，等权重单测试集策略。</p>
+<ol>
+<li>滚动等权重策略
+<ul>
+<li>滚动窗口长度t：12，18，24</li>
+<li>股票池N：10，20，50</li>
+<li>回测区间：2017-2020</li>
+<li>手续费：0.15%</li>
+</ul>
+</li>
+<li>滚动行业中性策略
+<ul>
+<li>滚动窗口长度t：12，18，24</li>
+<li>单行业股票池N：2，5，10</li>
+<li>回测区间：2017-2020</li>
+<li>手续费：0.15%</li>
+</ul>
+</li>
+<li>等权重单测试集策略
+<ul>
+<li>股票池N：10，20，50</li>
+<li>回测区间：2017-2020</li>
+<li>手续费：0.15%</li>
+</ul>
+</li>
+<li>行业中性单测试集策略
+<ul>
+<li>单行业股票池N：2，5，10</li>
+<li>回测区间：2017-2020</li>
+<li>手续费：0.15%</li>
+</ul>
+</li>
+</ol>
+<h2 id="实证结论">实证结论</h2>
+<p>等权重策略随机森林选股策略可以获得稳定的超额收益，行业中性策略效果不明显，下面展示滚动等权重策略（t:12;N:10)，单测试集等权重策略（N:10)和HS300指数的净值走势，如图2。<br>
+注：策略手续费0.15%，指数手续费0%。<br>
+<img src="https://github.com/nkuguanrui/portfolio_select_with_random_forest/blob/main/NV.png" alt="image" loading="lazy"><div align = center>图2</div></p>
 
                 </div>
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://nkuguanrui.github.io/post/zhong-guo-bo-zhi-000188bian-zhi-python/" class="post-title gt-a-link">
+                     中国波指（000188）编制（python）
+                </a>
+            </div>
         
 
         
