@@ -6,7 +6,7 @@
 
 <title> 基于随机森林的多因子选股模型 | Guan&#39;s blog</title>
 
-<link rel="shortcut icon" href="https://nkuguanrui.github.io/favicon.ico?v=1611411230552">
+<link rel="shortcut icon" href="https://nkuguanrui.github.io/favicon.ico?v=1611411582347">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://nkuguanrui.github.io/styles/main.css">
@@ -179,7 +179,7 @@
             
         </div>
         <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1611411230552"
+            <form id="gridea-search-form" style="position: relative" data-update="1611411582347"
                 action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
                 <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
@@ -211,9 +211,10 @@
                     
                 </div>
                 <div class="post-content">
-                    <p>本项目参考了华泰证券研报《人工智能选股之随机森林模型》。</p>
+                    <p>本项目参考了华泰证券研报《人工智能选股之随机森林模型》，项目绝大内容与研报类似，项目地址为：<a href="https://github.com/nkuguanrui/portfolio_select_with_random_forest">人工智能选股之随机森林模型</a>，网址为：<a href="https://github.com/nkuguanrui/portfolio_select_with_random_forest">https://github.com/nkuguanrui/portfolio_select_with_random_forest</a>。</p>
 <h2 id="随机森林">随机森林</h2>
-<p>随机森林利用了Bagging思想，集合多个决策树的决策，最终达到“三个臭皮匠顶个诸葛亮”效果，如图1。有关随机森林具体做法可以参考研报和相关书籍。</p>
+<p>随机森林利用了Bagging思想，集合多个决策树的决策，最终达到“三个臭皮匠顶个诸葛亮”效果，如图1。有关随机森林具体做法可以参考研报和相关书籍。<br>
+<img src="https://nkuguanrui.github.io/post-images/1611411277247.png" alt="" loading="lazy"></p>
 <h2 id="因子选择">因子选择</h2>
 <p>选择A股市场中表现较好的因子，如表1</p>
 <p>表1：因子</p>
@@ -484,8 +485,10 @@
 </li>
 </ol>
 <h2 id="实证结论">实证结论</h2>
-<p>等权重策略随机森林选股策略可以获得稳定的超额收益，行业中性策略效果不明显，下面展示滚动等权重策略（t:12;N:10)，单测试集等权重策略（N:10)和HS300指数的净值走势，如图2。<br>
-注：策略手续费0.15%，指数手续费0%。<br>
+<p>等权重策略随机森林选股策略可以获得稳定的超额收益，行业中性策略效果不明显，下面展示滚动等权重策略（t:12;N:10)，单测试集等权重策略（N:10)和HS300指数的净值走势，如图2。注：策略手续费0.15%，指数手续费0%。<br>
+<img src="https://nkuguanrui.github.io/post-images/1611411294127.png" alt="" loading="lazy"></p>
+<h2 id="代码和数据">代码和数据</h2>
+<p>项目地址为：<a href="https://github.com/nkuguanrui/portfolio_select_with_random_forest">人工智能选股之随机森林模型</a>，网址为：<a href="https://github.com/nkuguanrui/portfolio_select_with_random_forest">https://github.com/nkuguanrui/portfolio_select_with_random_forest</a><br>
 <strong>未经授权不得转载或转载请注明出处</strong></p>
 
                 </div>
