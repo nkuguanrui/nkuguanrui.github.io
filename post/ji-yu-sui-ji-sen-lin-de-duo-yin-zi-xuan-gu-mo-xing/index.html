@@ -6,7 +6,7 @@
 
 <title> 基于随机森林的多因子选股模型 | Guan&#39;s blog</title>
 
-<link rel="shortcut icon" href="https://nkuguanrui.github.io/favicon.ico?v=1611409703435">
+<link rel="shortcut icon" href="https://nkuguanrui.github.io/favicon.ico?v=1611411230552">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://nkuguanrui.github.io/styles/main.css">
@@ -179,7 +179,7 @@
             
         </div>
         <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1611409703435"
+            <form id="gridea-search-form" style="position: relative" data-update="1611411230552"
                 action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
                 <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
@@ -213,8 +213,7 @@
                 <div class="post-content">
                     <p>本项目参考了华泰证券研报《人工智能选股之随机森林模型》。</p>
 <h2 id="随机森林">随机森林</h2>
-<p>随机森林利用了Bagging思想，集合多个决策树的决策，最终达到“三个臭皮匠顶个诸葛亮”效果，如图1。有关随机森林具体做法可以参考研报和相关书籍。<br>
-<img src="https://github.com/nkuguanrui/portfolio_select_with_random_forest/blob/main/RF.png" alt="image" loading="lazy"><div align = center>图1</div></p>
+<p>随机森林利用了Bagging思想，集合多个决策树的决策，最终达到“三个臭皮匠顶个诸葛亮”效果，如图1。有关随机森林具体做法可以参考研报和相关书籍。</p>
 <h2 id="因子选择">因子选择</h2>
 <p>选择A股市场中表现较好的因子，如表1</p>
 <p>表1：因子</p>
@@ -423,8 +422,7 @@
 <li>训练集参数寻优
 <ul>
 <li>KFold交叉验证</li>
-<li>超参数：n_estimators;max_features;<br>
-min_samples_leaf;min_samples_split</li>
+<li>超参数：n_estimators;max_features;min_samples_leaf;min_samples_split</li>
 </ul>
 </li>
 <li>测试集回测
@@ -488,7 +486,7 @@ min_samples_leaf;min_samples_split</li>
 <h2 id="实证结论">实证结论</h2>
 <p>等权重策略随机森林选股策略可以获得稳定的超额收益，行业中性策略效果不明显，下面展示滚动等权重策略（t:12;N:10)，单测试集等权重策略（N:10)和HS300指数的净值走势，如图2。<br>
 注：策略手续费0.15%，指数手续费0%。<br>
-<img src="https://github.com/nkuguanrui/portfolio_select_with_random_forest/blob/main/NV.png" alt="image" loading="lazy"><div align = center>图2</div></p>
+<strong>未经授权不得转载或转载请注明出处</strong></p>
 
                 </div>
             </article>
