@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://nkuguanrui.github.io</id>
     <title>Guan&apos;s blog</title>
-    <updated>2021-01-23T13:40:46.549Z</updated>
+    <updated>2021-01-23T13:43:24.220Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://nkuguanrui.github.io"/>
     <link rel="self" href="https://nkuguanrui.github.io/atom.xml"/>
@@ -18,7 +18,7 @@
         <updated>2021-01-23T13:36:37.000Z</updated>
         <content type="html"><![CDATA[<p>中国波指编制；中国波动率指数；复现中国波指000188；python；</p>
 <h1 id="中国波指介绍">中国波指介绍</h1>
-<p>上证 50 ETF 波动率指数是基于上海证券交易所挂牌的 50 ETF 期权合约编制而成，反映投资者对未来 30 天 50 ETF 波动率的预期。上证 50 ETF 波动率指数不仅是反映投资者情绪的重要指标，也是衍生产品的重要标的，可作为投资者管控风险的有力工具。由于种种原因，中国波指在2018年停止发布。</p>
+<p>上证 50 ETF 波动率指数是基于上海证券交易所挂牌的 50 ETF 期权合约编制而成，反映投资者对未来 30 天 50 ETF 波动率的预期。上证 50 ETF 波动率指数不仅是反映投资者情绪的重要指标，也是衍生产品的重要标的，可作为投资者管控风险的有力工具。由于种种原因，中国波指在2018年停止发布本。项目目的是严格按照官方发布的指数编制方法重新复现波动率指数，数据和代码详见项目主页<a href="https://github.com/nkuguanrui/ivx">中国波指python编制</a>。</p>
 <ul>
 <li>指数名称：上证 50 ETF 波动率指数</li>
 <li>指数简称：中国波指</li>
@@ -35,8 +35,8 @@
 <h3 id="方法">方法</h3>
 <p>python+《上证50ETF波动率指数编制方案》</p>
 <h3 id="结论">结论</h3>
-<p>复现的波动率指数和中国波指相似度高达98.3%，达到实践可用水平,如图1。数据和代码详见项目主页<a href="https://github.com/nkuguanrui/ivx">中国波指python编制</a><br>
-<img src="IVX.png" alt="image" loading="lazy"></p>
+<p>复现的波动率指数和中国波指相似度高达98.3%，达到实践可用水平,如图。数据和代码详见项目主页<a href="https://github.com/nkuguanrui/ivx">中国波指python编制</a><br>
+<img src="https://nkuguanrui.github.io/post-images/1611409293578.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
 </feed>
