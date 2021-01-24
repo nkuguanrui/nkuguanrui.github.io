@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title> [原创]中国波指（000188）编制（python） | Guan&#39;s blog</title>
+<title>[原创]马科维茨均值方差模型 | Guan&#39;s blog</title>
 
 <link rel="shortcut icon" href="https://nkuguanrui.github.io/favicon.ico?v=1611463252130">
 
@@ -202,52 +202,58 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                     [原创]中国波指（000188）编制（python）
+                    [原创]马科维茨均值方差模型
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2021-01-23 ·
+                        · 2021-01-24 ·
                     </time>
                     
-                        <a href="https://nkuguanrui.github.io/tag/scy1Zea9I/" class="post-tags">
-                            # 风险管理
+                        <a href="https://nkuguanrui.github.io/tag/RydagQFsb/" class="post-tags">
+                            # 均值方差模型
                         </a>
                     
-                        <a href="https://nkuguanrui.github.io/tag/uEW2BUsEaF/" class="post-tags">
-                            # 衍生品
+                        <a href="https://nkuguanrui.github.io/tag/f-btgzWhwA/" class="post-tags">
+                            # 投资组合
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <p>中国波指编制；中国波动率指数；复现中国波指000188；python；</p>
-<h1 id="中国波指介绍">中国波指介绍</h1>
-<p>上证 50 ETF 波动率指数是基于上海证券交易所挂牌的 50 ETF 期权合约编制而成，反映投资者对未来 30 天 50 ETF 波动率的预期。上证 50 ETF 波动率指数不仅是反映投资者情绪的重要指标，也是衍生产品的重要标的，可作为投资者管控风险的有力工具。由于种种原因，中国波指在2018年停止发布本。项目目的是严格按照官方发布的指数编制方法重新复现波动率指数，数据和代码详见项目主页<a href="https://github.com/nkuguanrui/ivx">中国波指python编制</a>，网址：<a href="https://github.com/nkuguanrui/ivx">https://github.com/nkuguanrui/ivx</a>。</p>
+                    <h2 id="均值方差模型">均值方差模型</h2>
+<p>马科维茨在《portfolio selection》（1952）提出均值方差模型，在给定期望收益下风险最小，或者给定风险下期望收益最大，其本质是数学中最优化问题。</p>
+<p>实际操作中，利用N个资产的历史数据计算投资组合的收益和波动率，求解最优化问题做出有效前沿，其中夏普比率最大的组合是市场组合。</p>
+<h2 id="本文贡献">本文贡献</h2>
+<p>均值方差模型理论上会得到抛物线形状的散点图。但是在实际操作中，当资产数量N（5左右）不大时候，利用随机初始化权重方法可以画出较好的抛物线，但是当资产数量N太大时候（大于10）就很难通过随机初始化权重方法画出抛物线形状的散点图。</p>
+<p>本项目利用A股历史数据，利用python实现均值方差模型画出有效前沿和CML（资本市场线），并且解决资产数量过大无法画出抛物线散点图的情况。</p>
+<h2 id="python库">python库</h2>
 <ul>
-<li>指数名称：上证 50 ETF 波动率指数</li>
-<li>指数简称：中国波指</li>
-<li>英文名称：SSE 50 ETF Volatility Index</li>
-<li>英文简称：iVX</li>
-<li>指数代码：000188</li>
+<li>numpy</li>
+<li>matplotlib</li>
+<li>scipy</li>
+<li>itertools</li>
 </ul>
-<h2 id="计算方法">计算方法</h2>
-<p>上证 50 ETF 波动率指数是基于方差互换原理，采用上证 50 ETF 期权相关数据计算而得。具体计算方法参考中证指数有限公司分布的《上证50ETF波动率指数编制方案》。</p>
-<h2 id="指数复现">指数复现</h2>
-<p>由于种种原因，中国波指在2018年官方停止发布，本项目利用python和期权数据，严格按照中国波指官方编制方案，对中国波指进行复制，目的是为了可以获得最新的中国波指数据，方面投资者进行风险管控。</p>
-<h3 id="数据来源">数据来源</h3>
-<p>wind数据库，上证50ETF期权日度数据</p>
-<h3 id="方法">方法</h3>
-<p>python+《上证50ETF波动率指数编制方案》</p>
-<h3 id="结论">结论</h3>
-<p>复现的波动率指数和中国波指相似度高达98.3%，达到实践可用水平,如图。<br>
-<img src="https://nkuguanrui.github.io/post-images/1611409293578.png" alt="" loading="lazy"></p>
-<h1 id="数据和代码">数据和代码</h1>
-<p>数据和代码详见项目主页<a href="https://github.com/nkuguanrui/ivx">中国波指python编制</a>,网址：<a href="https://github.com/nkuguanrui/ivx">https://github.com/nkuguanrui/ivx</a>。<br>
-<strong>未经授权不得转载或转载请注明出处</strong></p>
+<h2 id="数据来源">数据来源</h2>
+<ul>
+<li>wind</li>
+</ul>
+<h2 id="代码和数据">代码和数据</h2>
+<ul>
+<li>详见主页</li>
+</ul>
+<h2 id="结果展示">结果展示</h2>
+<figure data-type="image" tabindex="1"><img src="https://nkuguanrui.github.io/post-images/1611463202152.png" alt="" loading="lazy"></figure>
 
                 </div>
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://nkuguanrui.github.io/post/ji-yu-sui-ji-sen-lin-de-duo-yin-zi-xuan-gu-mo-xing/" class="post-title gt-a-link">
+                     [研报复现]基于随机森林的多因子选股模型
+                </a>
+            </div>
         
 
         

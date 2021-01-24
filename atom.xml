@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://nkuguanrui.github.io</id>
     <title>Guan&apos;s blog</title>
-    <updated>2021-01-24T01:54:08.030Z</updated>
+    <updated>2021-01-24T04:40:55.161Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://nkuguanrui.github.io"/>
     <link rel="self" href="https://nkuguanrui.github.io/atom.xml"/>
@@ -10,6 +10,37 @@
     <logo>https://nkuguanrui.github.io/images/avatar.png</logo>
     <icon>https://nkuguanrui.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Guan&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[[原创]马科维茨均值方差模型]]></title>
+        <id>https://nkuguanrui.github.io/post/yuan-chuang-ma-ke-wei-ci-jun-zhi-fang-chai-mo-xing/</id>
+        <link href="https://nkuguanrui.github.io/post/yuan-chuang-ma-ke-wei-ci-jun-zhi-fang-chai-mo-xing/">
+        </link>
+        <updated>2021-01-24T04:37:26.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="均值方差模型">均值方差模型</h2>
+<p>马科维茨在《portfolio selection》（1952）提出均值方差模型，在给定期望收益下风险最小，或者给定风险下期望收益最大，其本质是数学中最优化问题。</p>
+<p>实际操作中，利用N个资产的历史数据计算投资组合的收益和波动率，求解最优化问题做出有效前沿，其中夏普比率最大的组合是市场组合。</p>
+<h2 id="本文贡献">本文贡献</h2>
+<p>均值方差模型理论上会得到抛物线形状的散点图。但是在实际操作中，当资产数量N（5左右）不大时候，利用随机初始化权重方法可以画出较好的抛物线，但是当资产数量N太大时候（大于10）就很难通过随机初始化权重方法画出抛物线形状的散点图。</p>
+<p>本项目利用A股历史数据，利用python实现均值方差模型画出有效前沿和CML（资本市场线），并且解决资产数量过大无法画出抛物线散点图的情况。</p>
+<h2 id="python库">python库</h2>
+<ul>
+<li>numpy</li>
+<li>matplotlib</li>
+<li>scipy</li>
+<li>itertools</li>
+</ul>
+<h2 id="数据来源">数据来源</h2>
+<ul>
+<li>wind</li>
+</ul>
+<h2 id="代码和数据">代码和数据</h2>
+<ul>
+<li>详见主页</li>
+</ul>
+<h2 id="结果展示">结果展示</h2>
+<figure data-type="image" tabindex="1"><img src="https://nkuguanrui.github.io/post-images/1611463202152.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ [研报复现]基于随机森林的多因子选股模型]]></title>
         <id>https://nkuguanrui.github.io/post/ji-yu-sui-ji-sen-lin-de-duo-yin-zi-xuan-gu-mo-xing/</id>
