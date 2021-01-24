@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://nkuguanrui.github.io</id>
     <title>Guan&apos;s blog</title>
-    <updated>2021-01-23T14:20:25.752Z</updated>
+    <updated>2021-01-24T01:40:31.044Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://nkuguanrui.github.io"/>
     <link rel="self" href="https://nkuguanrui.github.io/atom.xml"/>
@@ -11,11 +11,11 @@
     <icon>https://nkuguanrui.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Guan&apos;s blog</rights>
     <entry>
-        <title type="html"><![CDATA[ 基于随机森林的多因子选股模型]]></title>
+        <title type="html"><![CDATA[ [研报复现]基于随机森林的多因子选股模型]]></title>
         <id>https://nkuguanrui.github.io/post/ji-yu-sui-ji-sen-lin-de-duo-yin-zi-xuan-gu-mo-xing/</id>
         <link href="https://nkuguanrui.github.io/post/ji-yu-sui-ji-sen-lin-de-duo-yin-zi-xuan-gu-mo-xing/">
         </link>
-        <updated>2021-01-23T13:47:18.000Z</updated>
+        <updated>2021-01-24T01:40:18.000Z</updated>
         <content type="html"><![CDATA[<p>本项目参考了华泰证券研报《人工智能选股之随机森林模型》，项目绝大内容与研报类似，项目地址为：<a href="https://github.com/nkuguanrui/portfolio_select_with_random_forest">人工智能选股之随机森林模型</a>，网址为：<a href="https://github.com/nkuguanrui/portfolio_select_with_random_forest">https://github.com/nkuguanrui/portfolio_select_with_random_forest</a>。</p>
 <h2 id="随机森林">随机森林</h2>
 <p>随机森林利用了Bagging思想，集合多个决策树的决策，最终达到“三个臭皮匠顶个诸葛亮”效果，如图1。有关随机森林具体做法可以参考研报和相关书籍。<br>
@@ -298,7 +298,7 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[ 中国波指（000188）编制（python）]]></title>
+        <title type="html"><![CDATA[ [原创]中国波指（000188）编制（python）]]></title>
         <id>https://nkuguanrui.github.io/post/zhong-guo-bo-zhi-000188bian-zhi-python/</id>
         <link href="https://nkuguanrui.github.io/post/zhong-guo-bo-zhi-000188bian-zhi-python/">
         </link>
