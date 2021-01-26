@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://nkuguanrui.github.io</id>
     <title>Guan&apos;s blog</title>
-    <updated>2021-01-26T08:59:14.067Z</updated>
+    <updated>2021-01-26T12:39:07.546Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://nkuguanrui.github.io"/>
     <link rel="self" href="https://nkuguanrui.github.io/atom.xml"/>
@@ -10,6 +10,43 @@
     <logo>https://nkuguanrui.github.io/images/avatar.png</logo>
     <icon>https://nkuguanrui.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Guan&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[[论文复现]Tayal(2020)]]></title>
+        <id>https://nkuguanrui.github.io/post/lun-wen-fu-xian-tayal2020/</id>
+        <link href="https://nkuguanrui.github.io/post/lun-wen-fu-xian-tayal2020/">
+        </link>
+        <updated>2021-01-26T12:37:59.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="论文整体思路">论文整体思路</h1>
+<ul>
+<li>马科维茨的均值-方差(MV)模型通过分散投资，计算给定目标收益率下的期望风险实现了金融资产的最优化配置。然而，由于维数诅咒和高交易成本，使得大量资产同时利用均值-方差(MV)模型进行最优化配置几乎不可能。</li>
+<li>在模型中加入基数约束可以解决上述问题，但是带有基数约束的MV模型是NP完全问题，计算复杂度很大。一种解决办法是在求解模型前减小资产的数量，获得资产子集，从而解决基数约束问题。</li>
+<li>聚类可以生成代表性子集，在进行MV最优化前主动减少资产的规模，从而加速模型求解速度。</li>
+</ul>
+<h1 id="均值方差模型">均值方差模型</h1>
+<ol>
+<li>带有数量约束的MV最优化模型如图所示：<br>
+<img src="https://nkuguanrui.github.io/post-images/1611664727726.png" alt="" loading="lazy"></li>
+<li>带有基数约束的MV最优化模型是在上述最优化模型基础上加入<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mi>n</mi></msubsup><msub><mi>z</mi><mi>i</mi></msub><mo>≤</mo><mi>K</mi><mo>(</mo><msub><mi>z</mi><mi>i</mi></msub><mo>∈</mo><mo>{</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo>}</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">\sum_{i=0}^{n}{z_i} \leq K  (z_i \in \{0,1\})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.104002em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">}</span><span class="mclose">)</span></span></span></span><br>
+其中K是资产组合中最大资产数量，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>z</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">z_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>等于1表示投资组合中存在该资产，等于0表示不存在。<br>
+具有基数约束的MV模型可以使用基于元启发式的技术如模拟退火、遗传算法、禁忌搜索、人工蜂群算法、粒子群优化或其他启发式方法如神经网络来求解。</li>
+</ol>
+<h1 id="聚类mv模型">聚类MV模型</h1>
+<p>聚类可以生成代表性子集，从而构建最优化投资组合，聚类与MV模型集成模型可以由如下几个步骤实现。</p>
+<ol>
+<li>确定最优簇数K。其目的是找到可以代表整个资产全集的子集，以便减少其维数<br>
+<img src="https://nkuguanrui.github.io/post-images/1611664733894.png" alt="" loading="lazy"></li>
+<li>寻找代表性子集。其目的是以每个集群中指定一个具有代表性的资产<br>
+<img src="https://nkuguanrui.github.io/post-images/1611664738644.png" alt="" loading="lazy"></li>
+<li>求解MV模型</li>
+</ol>
+<h1 id="滚动回测">滚动回测</h1>
+<ol start="4">
+<li>计算样本外OOS收益率</li>
+</ol>
+<h1 id=""></h1>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[原创]马科维茨均值方差模型]]></title>
         <id>https://nkuguanrui.github.io/post/yuan-chuang-ma-ke-wei-ci-jun-zhi-fang-chai-mo-xing/</id>
