@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://nkuguanrui.github.io</id>
     <title>Guan&apos;s blog</title>
-    <updated>2021-01-24T04:42:53.268Z</updated>
+    <updated>2021-01-26T08:31:18.245Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://nkuguanrui.github.io"/>
     <link rel="self" href="https://nkuguanrui.github.io/atom.xml"/>
@@ -360,6 +360,62 @@
 <h1 id="数据和代码">数据和代码</h1>
 <p>数据和代码详见项目主页<a href="https://github.com/nkuguanrui/ivx">中国波指python编制</a>,网址：<a href="https://github.com/nkuguanrui/ivx">https://github.com/nkuguanrui/ivx</a>。<br>
 <strong>未经授权不得转载或转载请注明出处</strong></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[文献复现]Fama-French(1992)]]></title>
+        <id>https://nkuguanrui.github.io/post/xue-zhu-wen-xian-fu-xian-fama-french(1992)/</id>
+        <link href="https://nkuguanrui.github.io/post/xue-zhu-wen-xian-fu-xian-fama-french(1992)/">
+        </link>
+        <updated>2020-06-23T12:45:51.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="论文复现famafrench1992三因子模型持续升级中ing">[论文复现]FamaFrench(1992)三因子模型(持续升级中...ing)</h1>
+<h1 id="项目目的">项目目的</h1>
+<p>本项目利用美国股票月度历史数据，利用python严格按照FamaFrench(1992)中的方法构造三因子（市场因子，HML因子，SMB因子），并且按照论文中所用的方法对模型进行时间序列回归检验。在文章写作过程中，本文会把重要的细节的附上原文。详见项目<a href="https://github.com/nkuguanrui/FamaFrenchThreeFacorModel">FamaFrench3Factors</a>，项目地址为：<a href="https://github.com/nkuguanrui/FamaFrenchThreeFacorModel">https://github.com/nkuguanrui/FamaFrenchThreeFacorModel</a></p>
+<h1 id="三因子构建">三因子构建</h1>
+<h2 id="数据来源">数据来源</h2>
+<ul>
+<li>wrds数据库</li>
+<li>CRSP</li>
+<li>COMPUSTAT</li>
+</ul>
+<h2 id="数据处理">数据处理</h2>
+<ul>
+<li>删除金融公司(We exclude financial firms because the high leverage that is normal for these firms probably does not have the same meaning as for nonfinancial firms, where high leverage more likely indicates distress.)</li>
+<li>为了确保财报发布，将t-1年的财务信息与t年7月到t+1年6月的收益率进行匹配,也就是说，将上市公司年报发布时间统一设定在下一年的6月。(To ensure that the accounting variables are known before the returns they are used to explain, we match the accounting data for all fiscal yearends in calendar year t - 1 (1962-1989) with the returns for July of year t to June of t + 1.)</li>
+</ul>
+<h2 id="因子构建">因子构建</h2>
+<ol>
+<li>t年的6月，以纽交所股票截面数据，计算市值的50%分位点和BM(book-to-markert ratio)的30%和70%分位点。
+<ul>
+<li>计算BM分位点史去掉BM小于0的股票(We do not use negative-BE firms, when calculating the breakpoints for BM or when forming the size-BM portfolios.)</li>
+<li>市值(size)选择t年6月的数据;BM是用t-1年财年末的账面价值除以t-1年末的市值</li>
+</ul>
+</li>
+<li>对纽交所，纳斯达克，美交所股票做2x3独立双重排序(independent double sorting),分成6组，计算每组t年7月到t+1年6月的月度市值加权收益率。t+1年6月重新构造2x3组合。</li>
+<li>构建HML和SMB因子:
+<ul>
+<li>$SMB = (SH+SM+SL)/3 - (BH+BM+BL)/3 $</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mi>M</mi><mi>L</mi><mo>=</mo><mo>(</mo><mi>S</mi><mi>H</mi><mo>+</mo><mi>B</mi><mi>H</mi><mo>)</mo><mi mathvariant="normal">/</mi><mn>2</mn><mo>−</mo><mo>(</mo><mi>S</mi><mi>L</mi><mo>+</mo><mi>B</mi><mi>L</mi><mo>)</mo><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">HML= (SH+BH)/2 - (SL+BL)/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">L</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mclose">)</span><span class="mord">/</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault">L</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault">L</span><span class="mclose">)</span><span class="mord">/</span><span class="mord">2</span></span></span></span></li>
+</ul>
+</li>
+<li>市场因子：RM-RF
+<ul>
+<li>RM：全部股票月度市值加权收益率</li>
+<li>RF：一个月国债收益率</li>
+</ul>
+</li>
+</ol>
+<h2 id="因子检验">因子检验</h2>
+<p>FamaFrench(1992)利用时间序列回归，估计定价误差，对三因子模型进行检验。</p>
+<ol>
+<li>构造25个投资组合，构造方法和因子构建中的方法一致，唯一的差别是做5x5独立双重排序。</li>
+<li>计算25个组合的月度加权收益率，计算超额收益</li>
+<li>以25个组合的超额收益为因变量，以三因子为自变量，进行时间序列回归，股票定价误差和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span></li>
+<li>对定价误差进行<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>检验，如果定价误差不显著不等于0，则多因子模型有效</li>
+<li>对<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span>进行检验，发现<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span>显著不等于0，说明因子对25个投资组合的超额收益率有显著的解释能力。</li>
+</ol>
+<h2 id="数据和代码">数据和代码</h2>
+<p>详见项目<a href="https://github.com/nkuguanrui/FamaFrenchThreeFacorModel">FamaFrench3Factors</a>，项目地址为：<a href="https://github.com/nkuguanrui/FamaFrenchThreeFacorModel">https://github.com/nkuguanrui/FamaFrenchThreeFacorModel</a></p>
 ]]></content>
     </entry>
 </feed>
