@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://nkuguanrui.github.io</id>
     <title>Guan&apos;s blog</title>
-    <updated>2021-01-26T08:32:53.842Z</updated>
+    <updated>2021-01-26T08:55:47.366Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://nkuguanrui.github.io"/>
     <link rel="self" href="https://nkuguanrui.github.io/atom.xml"/>
@@ -368,8 +368,7 @@
         <link href="https://nkuguanrui.github.io/post/xue-zhu-wen-xian-fu-xian-fama-french(1992)/">
         </link>
         <updated>2020-06-23T12:45:51.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="论文复现famafrench1992三因子模型持续升级中ing">[论文复现]FamaFrench(1992)三因子模型(持续升级中...ing)</h1>
-<h1 id="项目目的">项目目的</h1>
+        <content type="html"><![CDATA[<h1 id="项目目的">项目目的</h1>
 <p>本项目利用美国股票月度历史数据，利用python严格按照FamaFrench(1992)中的方法构造三因子（市场因子，HML因子，SMB因子），并且按照论文中所用的方法对模型进行时间序列回归检验。在文章写作过程中，本文会把重要的细节的附上原文。详见项目<a href="https://github.com/nkuguanrui/FamaFrenchThreeFacorModel">FamaFrench3Factors</a>，项目地址为：<a href="https://github.com/nkuguanrui/FamaFrenchThreeFacorModel">https://github.com/nkuguanrui/FamaFrenchThreeFacorModel</a></p>
 <h1 id="三因子构建">三因子构建</h1>
 <h2 id="数据来源">数据来源</h2>
