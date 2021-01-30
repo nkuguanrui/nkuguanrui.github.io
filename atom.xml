@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://nkuguanrui.github.io</id>
     <title>Guan&apos;s blog</title>
-    <updated>2021-01-26T12:39:07.546Z</updated>
+    <updated>2021-01-30T08:50:20.688Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://nkuguanrui.github.io"/>
     <link rel="self" href="https://nkuguanrui.github.io/atom.xml"/>
@@ -10,6 +10,44 @@
     <logo>https://nkuguanrui.github.io/images/avatar.png</logo>
     <icon>https://nkuguanrui.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Guan&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[ [原创]python实现期权定价，期权交易策略（持续升级中....ing）]]></title>
+        <id>https://nkuguanrui.github.io/post/python-shi-xian-qi-quan-ding-jie-qi-quan-jiao-yi-ce-lue-chi-xu-sheng-ji-zhong-ing/</id>
+        <link href="https://nkuguanrui.github.io/post/python-shi-xian-qi-quan-ding-jie-qi-quan-jiao-yi-ce-lue-chi-xu-sheng-ji-zhong-ing/">
+        </link>
+        <updated>2021-01-30T08:44:24.000Z</updated>
+        <content type="html"><![CDATA[<p>本系列文章致力于用python实现与期权定价，期权交易策略，波动率交易策略等代码。<br>
+项目地址：<a href="https://github.com/nkuguanrui/optionpricing">python期权</a></p>
+<h1 id="期权定价">期权定价</h1>
+<pre><code>    import BSmodel as bs
+    s,k,r,t,v,cp = 10,10,0.03,30/365,1
+    &quot;&quot;&quot;
+    s:标的价格
+    k:行权价格
+    r:无风险利率
+    t:剩余期限
+    v:波动率
+    cp:1为call ，-1为put
+    &quot;&quot;&quot;
+    p1 = bs.caculateBSM(s,k,r,t,v,cp)
+</code></pre>
+<h1 id="隐含波动率">隐含波动率</h1>
+<pre><code>    import BSmodel as bs
+    s,k,r,t,v,cp = 10,10,0.03,30/365,1
+    price = 1
+    &quot;&quot;&quot;
+    price:期权市场价格
+    s:标的价格
+    k:行权价格
+    r:无风险利率
+    t:剩余期限
+    cp:1为call ，-1为put
+    &quot;&quot;&quot;
+    IV1 = bs.caculateIV_Newton(price,s,k,r,t,cp)# 牛顿法
+    IV2 = bs.caculateIV_Dichotomy(price,s,k,r,t,cp) #二分法
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[论文复现]Tayal(2020)]]></title>
         <id>https://nkuguanrui.github.io/post/lun-wen-fu-xian-tayal2020/</id>
